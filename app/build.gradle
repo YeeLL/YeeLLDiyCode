@@ -26,4 +26,13 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile "com.google.dagger:dagger:2.7"
+    apt "com.google.dagger:dagger-compiler:2.7"
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'io.reactivex:rxandroid:1.2.1'
+// Because RxAndroid releases are few and far between, it is recommended you also
+// explicitly depend on RxJava's latest version for bug fixes and new features.
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
 }
