@@ -1,4 +1,4 @@
-package yeell.yeelldiycode.RxUtils.ApiUtils;
+package yeell.yeelldiycode.rxUtils.apiutils;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;

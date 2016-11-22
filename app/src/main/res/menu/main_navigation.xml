@@ -5,8 +5,30 @@
     <group android:id="@+id/group1">
         <item
             android:id="@+id/my_posts"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/navigation_posts"
             android:title="@string/main_navigation_my_posts" />
+        <item
+            android:id="@+id/my_collection"
+            android:icon="@drawable/navigation_collection"
+            android:title="@string/main_navigation_my_collection" />
+        <item
+            android:id="@+id/my_comment"
+            android:icon="@drawable/navigation_comment"
+            android:title="@string/main_navigation_my_comment" />
+        <item
+            android:id="@+id/my_share"
+            android:icon="@drawable/navigation_share"
+            android:title="@string/main_navigation_my_share" />
+    </group>
+    <group android:id="@+id/group2">
+        <item
+            android:id="@+id/about_me"
+            android:icon="@drawable/navigation_about_me"
+            android:title="@string/main_navigation_about_me" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/navigation_settings"
+            android:title="@string/main_navigation_settings" />
 
     </group>
 </menu>

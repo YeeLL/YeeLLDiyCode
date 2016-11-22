@@ -9,7 +9,8 @@
         android:icon="@drawable/search"
         android:orderInCategory="80"
         android:title="@string/main_toolbar_search"
-        app:showAsAction="ifRoom" />
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
 
     <item
         android:id="@+id/action_message"
