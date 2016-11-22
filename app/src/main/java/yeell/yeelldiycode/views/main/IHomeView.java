@@ -11,4 +11,5 @@ public interface IHomeView {
     void updateUserInfo(UserModel userModel);
 
     void changeFragment(int tagId);
+
 }

@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="white">#ffffff</color>
+    <color name="tablayout_text">#db3937</color>
+    <color name="new_profile_task_text">#555555</color>
 </resources>

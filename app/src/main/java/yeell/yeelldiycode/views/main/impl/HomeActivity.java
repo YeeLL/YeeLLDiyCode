@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.SearchView;
@@ -14,13 +17,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TableLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import yeell.yeelldiycode.R;
+import yeell.yeelldiycode.adapter.HomeFragmentPagerAdapter;
 import yeell.yeelldiycode.base.BaseActivity;
+import yeell.yeelldiycode.model.main.impl.UserModel;
+import yeell.yeelldiycode.presenters.main.impl.HomePresenter;
+import yeell.yeelldiycode.views.main.IHomeView;
 
-public class HomeActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity implements IHomeView,
+        NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.main_tool_bar)
     Toolbar mToolbar;
@@ -30,9 +42,16 @@ public class HomeActivity extends BaseActivity {
     NavigationView mNavigationView;
     @BindView(R.id.drawer)
     DrawerLayout mDrawerLayout;
+    @BindView(R.id.main_tablayout)
+    TabLayout mTabLayout;
+    @BindView(R.id.viewpager)
+    ViewPager mViewPager;
 
     ImageView mHeader;
     TextView mEmail;
+    HomeFragmentPagerAdapter mAdapter;
+    HomePresenter homePresenter;
+    int mCurrentPosition = 0;
 
     @Override
     protected int getContentId() {
@@ -42,43 +61,71 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
-        setToolBar();
-        setNavigation();
+        initData();
+        initToolBar();
+        initNavigation();
+        initTableLayout();
     }
 
-    private void setNavigation() {
+    private void initData() {
+        homePresenter = new HomePresenter(this);
+    }
+
+    //初始化TableLayout
+    private void initTableLayout() {
+        mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+
+        ArrayList<String> titleList = new ArrayList<>();
+        titleList.add("Topic");
+        titleList.add("News");
+        titleList.add("Sites");
+
+        ArrayList<Fragment> listFragment = new ArrayList<>();
+        listFragment.add(new TopicFragment());
+        listFragment.add(new NewsFragment());
+        listFragment.add(new SitesFragment());
+
+        mAdapter = new HomeFragmentPagerAdapter(getSupportFragmentManager(), titleList, listFragment);
+
+        mViewPager.setAdapter(mAdapter);
+        mViewPager.setOffscreenPageLimit(2);
+        mTabLayout.setupWithViewPager(mViewPager);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mCurrentPosition = position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        mViewPager.setCurrentItem(mCurrentPosition);
+    }
+
+    //初始化Navigation
+    private void initNavigation() {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawerLayout, mToolbar, R.string.open_drawer, R.string.close_drawer);
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.my_posts:
-                        break;
-                    case R.id.my_collection:
-                        break;
-                    case R.id.my_comment:
-                        break;
-                    case R.id.my_share:
-                        break;
-                    case R.id.about_me:
-                        break;
-                    case R.id.settings:
-                        break;
-                }
-                mDrawerLayout.closeDrawers();
-                return true;
-            }
-        });
+        //设置navigation Item 点击事件
+        mNavigationView.setNavigationItemSelectedListener(this);
 
         //初始化头像
         View headerView = mNavigationView.getHeaderView(0);
         initHeaderView(headerView);
     }
 
+    //初始化头像
     private void initHeaderView(View headerView) {
         if (headerView == null) {
             return;
@@ -87,8 +134,8 @@ public class HomeActivity extends BaseActivity {
         mEmail = (TextView) headerView.findViewById(R.id.main_navigation_txt_email);
     }
 
-
-    private void setToolBar() {
+    //初始化ToolBar
+    private void initToolBar() {
         setSupportActionBar(mToolbar);
         Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -106,6 +153,12 @@ public class HomeActivity extends BaseActivity {
         mToolbar.setOnMenuItemClickListener(onMenuItemClick);
     }
 
+    /**
+     * 创建Toolbar menu
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -124,6 +177,36 @@ public class HomeActivity extends BaseActivity {
                 return false;
             }
         });
+        return true;
+    }
+
+    @Override
+    public void updateUserInfo(UserModel userModel) {
+
+    }
+
+    @Override
+    public void changeFragment(int tagId) {
+
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.my_posts:
+                break;
+            case R.id.my_collection:
+                break;
+            case R.id.my_comment:
+                break;
+            case R.id.my_share:
+                break;
+            case R.id.about_me:
+                break;
+            case R.id.settings:
+                break;
+        }
+        mDrawerLayout.closeDrawers();
         return true;
     }
 }
