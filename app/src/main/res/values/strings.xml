@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">YeeLLDiyCode</string>
+
+    <!--main-->
+    <string name="main_navigation_my_posts">我的帖子</string>
+    <string name="main_toolbar_search">search</string>
+    <string name="main_toolbar_settings">settings</string>
+    <string name="main_toolbar_message">message</string>
+    <string name="open_drawer">open_drawer</string>
+    <string name="close_drawer">close_drawer</string>
 </resources>
