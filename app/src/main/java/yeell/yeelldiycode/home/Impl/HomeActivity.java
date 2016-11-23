@@ -1,4 +1,4 @@
-package yeell.yeelldiycode.views.main.impl;
+package yeell.yeelldiycode.home.Impl;
 
 import android.app.SearchManager;
 import android.os.Bundle;
@@ -17,22 +17,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import yeell.yeelldiycode.R;
 import yeell.yeelldiycode.adapter.HomeFragmentPagerAdapter;
 import yeell.yeelldiycode.base.BaseActivity;
-import yeell.yeelldiycode.model.main.impl.UserModel;
-import yeell.yeelldiycode.presenters.main.impl.HomePresenter;
-import yeell.yeelldiycode.views.main.IHomeView;
+import yeell.yeelldiycode.home.injector.DaggerHomeComponent;
+import yeell.yeelldiycode.home.injector.HomeComponent;
+import yeell.yeelldiycode.home.injector.HomeModule;
 
-public class HomeActivity extends BaseActivity implements IHomeView,
-        NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.main_tool_bar)
     Toolbar mToolbar;
@@ -53,6 +53,11 @@ public class HomeActivity extends BaseActivity implements IHomeView,
     HomePresenter homePresenter;
     int mCurrentPosition = 0;
 
+    @Inject
+    HomePresenter mHomePresenter;
+
+    HomeComponent mHomeComonent;
+
     @Override
     protected int getContentId() {
         return R.layout.activity_main;
@@ -61,10 +66,16 @@ public class HomeActivity extends BaseActivity implements IHomeView,
     @Override
     protected void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
+        mHomeComonent = DaggerHomeComponent.builder().homeModule(new HomeModule(this)).build();
+        mHomeComonent.inject(this);
         initData();
         initToolBar();
         initNavigation();
         initTableLayout();
+    }
+
+    public HomeComponent getmHomeComonent() {
+        return mHomeComonent;
     }
 
     private void initData() {
@@ -178,16 +189,6 @@ public class HomeActivity extends BaseActivity implements IHomeView,
             }
         });
         return true;
-    }
-
-    @Override
-    public void updateUserInfo(UserModel userModel) {
-
-    }
-
-    @Override
-    public void changeFragment(int tagId) {
-
     }
 
     @Override
