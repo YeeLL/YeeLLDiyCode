@@ -50,6 +50,7 @@ public class TopicFragment extends BaseFragment implements IHomeView {
                 .getFragmentComponent(new FragmentModule(mList, getContext())).inject(this);
         initRecyclerView();
         loadData();
+
     }
 
     private void initRecyclerView() {
