@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import yeell.yeelldiycode.R;
 import yeell.yeelldiycode.models.home.TopicModel;
-import yeell.yeelldiycode.rxUtils.ImageLoader;
+import yeell.yeelldiycode.utils.ImageLoader;
 
 /**
  * Created by YeeLL on 11/24/16.

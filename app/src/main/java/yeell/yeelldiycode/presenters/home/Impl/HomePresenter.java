@@ -8,7 +8,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import yeell.yeelldiycode.models.home.TopicModel;
-import yeell.yeelldiycode.rxUtils.apiutils.ApiManagers;
+import yeell.yeelldiycode.utils.apiutils.ApiManagers;
 import yeell.yeelldiycode.views.home.Impl.HomeActivity;
 import yeell.yeelldiycode.views.home.Impl.TopicFragment;
 

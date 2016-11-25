@@ -1,4 +1,4 @@
-package yeell.yeelldiycode.rxUtils;
+package yeell.yeelldiycode.utils;
 
 import android.app.Activity;
 import android.content.Context;
