@@ -1,4 +1,4 @@
-package yeell.yeelldiycode.home.Impl;
+package yeell.yeelldiycode.models.home;
 
 /**
  * Created by yee on 11/22/16.

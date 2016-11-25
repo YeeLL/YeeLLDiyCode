@@ -1,10 +1,8 @@
-package yeell.yeelldiycode.home.injector;
-
-import javax.inject.Singleton;
+package yeell.yeelldiycode.injectors.home;
 
 import dagger.Component;
 import yeell.yeelldiycode.base.PerActivity;
-import yeell.yeelldiycode.home.Impl.HomeActivity;
+import yeell.yeelldiycode.views.home.Impl.HomeActivity;
 
 /**
  * Created by yee on 11/23/16.
@@ -13,7 +11,7 @@ import yeell.yeelldiycode.home.Impl.HomeActivity;
 @Component(modules = HomeModule.class)
 public interface HomeComponent {
 
-    FragmentComponent getFragmentComPonet(FragmentModule fragmentModule);
+    FragmentComponent getFragmentComponent(FragmentModule fragmentModule);
 
     void inject(HomeActivity homeActivity);
 }

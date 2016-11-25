@@ -1,9 +1,8 @@
-package yeell.yeelldiycode.home.injector;
+package yeell.yeelldiycode.injectors.home;
 
-import dagger.Component;
 import dagger.Subcomponent;
 import yeell.yeelldiycode.base.PerFragment;
-import yeell.yeelldiycode.home.Impl.TopicFragment;
+import yeell.yeelldiycode.views.home.Impl.TopicFragment;
 
 /**
  * Created by yee on 11/23/16.

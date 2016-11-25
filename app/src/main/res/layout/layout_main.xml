@@ -25,7 +25,7 @@
             android:layout_height="40dp"
             app:tabIndicatorColor="@color/tablayout_text"
             app:tabSelectedTextColor="@color/tablayout_text"
-            app:tabTextColor="@color/new_profile_task_text" />
+            app:tabTextColor="@color/text_color_name" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager

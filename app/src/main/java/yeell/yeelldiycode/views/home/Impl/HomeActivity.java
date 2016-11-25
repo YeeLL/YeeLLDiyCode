@@ -1,4 +1,4 @@
-package yeell.yeelldiycode.home.Impl;
+package yeell.yeelldiycode.views.home.Impl;
 
 import android.app.SearchManager;
 import android.os.Bundle;
@@ -18,7 +18,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -28,9 +27,10 @@ import butterknife.BindView;
 import yeell.yeelldiycode.R;
 import yeell.yeelldiycode.adapter.HomeFragmentPagerAdapter;
 import yeell.yeelldiycode.base.BaseActivity;
-import yeell.yeelldiycode.home.injector.DaggerHomeComponent;
-import yeell.yeelldiycode.home.injector.HomeComponent;
-import yeell.yeelldiycode.home.injector.HomeModule;
+import yeell.yeelldiycode.injectors.home.DaggerHomeComponent;
+import yeell.yeelldiycode.injectors.home.HomeComponent;
+import yeell.yeelldiycode.injectors.home.HomeModule;
+import yeell.yeelldiycode.presenters.home.Impl.HomePresenter;
 
 public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 

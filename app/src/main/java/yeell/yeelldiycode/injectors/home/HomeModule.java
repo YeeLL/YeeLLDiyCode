@@ -1,12 +1,10 @@
-package yeell.yeelldiycode.home.injector;
-
-import javax.inject.Singleton;
+package yeell.yeelldiycode.injectors.home;
 
 import dagger.Module;
 import dagger.Provides;
 import yeell.yeelldiycode.base.PerActivity;
-import yeell.yeelldiycode.home.Impl.HomeActivity;
-import yeell.yeelldiycode.home.Impl.HomePresenter;
+import yeell.yeelldiycode.presenters.home.Impl.HomePresenter;
+import yeell.yeelldiycode.views.home.Impl.HomeActivity;
 
 /**
  * Created by yee on 11/23/16.

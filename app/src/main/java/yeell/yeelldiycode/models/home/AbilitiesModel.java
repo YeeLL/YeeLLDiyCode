@@ -1,4 +1,4 @@
-package yeell.yeelldiycode.home.Impl;
+package yeell.yeelldiycode.models.home;
 
 import java.io.Serializable;
 
